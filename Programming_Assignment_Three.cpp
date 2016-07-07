@@ -1,7 +1,8 @@
 //
 // Robert VanCleave
 // Programming Assignment Three
-// Uses float return type functions
+// Uses float, int, and void return type functions
+// Program requires .txt file input parameters as a prerequisite
 // Program utilizes functions to calculate and output tax data
 //
 
@@ -10,9 +11,10 @@
 #include <fstream>
 #include <string>
 using namespace std;
+using std::string;
 
-float exemptionfunc(ifstream& files, string errormessageM, string errormessageP, char marital, int children, 
-	int errordataM, int errordataP, float pension, float exemptions);
+float exemptionfunc(ifstream& files, string errormessageM, char marital, int children, int errordataM, float pension, 
+	float exemptions);
 float taxincomefunc(ifstream& files, float income, float pension, float deductions, float taxincome, float exemptions);
 float taxowedfunc(ifstream& files, string errormessageP, int errordataP, float taxincome, float pension, float taxowed);
 int openfiles(ifstream& files, ofstream& outfile, ofstream& errorfile, string filename, int errorcheck);
@@ -55,8 +57,8 @@ int main() {
 //********************************************************************************************************************
 //********************************************************************************************************************
 //********************************************************************************************************************
-float exemptionfunc(ifstream& files, string errormessageM, string errormessageP, char marital, int children, 
-	int errordataM, int errordataP, float pension, float exemptions) {
+float exemptionfunc(ifstream& files, string errormessageM, char marital, int children, int errordataM, float pension, 
+	float exemptions) {
 	switch (marital) {
 		case 'M': {
 				errordataM = 0;
@@ -156,7 +158,7 @@ void readdata(ifstream& files, ofstream& outfile, ofstream& errorfile, string fi
 			outfile	<< "========================================================================\n";					
 				do {
 					files >> lastname >> marital >> children >> income >> pension;
-					exemptionfunc(files, errormessageM, errormessageP, marital, children, errordataM, errordataP, pension, exemptions);
+					exemptionfunc(files, errormessageM, marital, children, errordataM, pension, exemptions);
 					taxincomefunc(files, income, pension, deductions, taxincome, exemptions);
 					taxowedfunc(files, errormessageP, errordataP, taxincome, pension, taxowed);
 					outputdata(files, outfile, errorfile, filename, lastname, errormessageM, errormessageP, marital, children, 
