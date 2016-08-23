@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool testingoutput = true;
+string statement = "Hello world";
+
+int main ()
+{
+    if(testingoutput == true)
+    {
+
+    cout << statement << endl;
+    }
+    return 0;
+}
