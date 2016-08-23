@@ -1,0 +1,17 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool testingoutput = true;
+string statement = "Hello world";
+string statementaddition = ". How are you?";
+
+int main ()
+{
+    if(testingoutput == true)
+    {
+
+    cout << statement + statementaddition << endl;
+    }
+    return 0;
+}
